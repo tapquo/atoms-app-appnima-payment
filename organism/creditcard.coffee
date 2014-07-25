@@ -8,7 +8,7 @@
 ###
 "use strict"
 
-class Atoms.Organism.AppnimaCreditCard extends Atoms.Organism.Modal
+class Atoms.Organism.AppnimaCreditCard extends Atoms.Organism.Dialog
 
   @extends: true
 
@@ -55,10 +55,9 @@ class Atoms.Organism.AppnimaCreditCard extends Atoms.Organism.Modal
   purchase: (amount=0, description, provider=0) ->
     window.Appnima.User.session()
     if window.Appnima?.key? and window.Appnima?.token?
-      Atoms.App.Modal.Loading.show()
+      __.Dialog.Loading.show()
       Appnima.Payments.getCreditCards().then (error, result) =>
-        Atoms.App.Modal.Loading.hide()
-        console.log error, result
+        __.Dialog.Loading.hide()
         creditcards = result.creditcards
 
 
